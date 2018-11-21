@@ -1,10 +1,10 @@
 # Baby names data
 
 ## South Australia
-https://data.gov.au/dataset/9849aa7f-e316-426e-8ab5-74658a62c7e6
+https://data.sa.gov.au/data/dataset/popular-baby-names
 
 ## NSW
-https://data.gov.au/dataset/3cdbce99-a931-4a10-b0d0-766dd8005ac9
+https://www.bdm.nsw.gov.au/Pages/about-us/facts-statistics.aspx#Popularbabynames
 
 ## Tasmania
 https://data.gov.au/dataset/0ec6f374-8b54-4500-ae40-97f39bba9036
