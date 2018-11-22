@@ -86,6 +86,43 @@ ozbabynames %>%
 
 <img src="man/figures/README-explore-author-names-1.png" width="100%" />
 
+And let’s see that animated
+
+``` r
+devtools::install_github('thomasp85/gganimate')
+```
+
+``` r
+library(gganimate)
+
+ozbabynames %>%
+  filter(name %in% author_names) %>%
+  count(name,year, wt = count) %>%
+  ggplot(aes(x = year, 
+             y = n,
+             colour = name,
+             group = name,
+             label = name,
+             fill = name)) +
+  geom_line(size = 1, linetype = "dotted") +
+  geom_label(colour = "white", alpha = 0.75, size =  5) +
+  theme_bw() +
+  theme(panel.grid = element_blank(),
+        legend.position = "none",
+        title = element_text(colour = "purple",
+                             size = 20,
+                             face = "bold")
+        ) +
+  labs( title = "number of bubs dubbed in {frame_along} ",
+        y = "n babies" ) +
+  scale_y_log10(labels = scales::comma) +
+  transition_reveal(id = name, along = year) +
+  enter_grow(fade = TRUE) +
+  exit_shrink(fade = TRUE)
+```
+
+<img src="man/figures/README-animate-explore-author-names-1.gif" width="100%" />
+
 ## Known Issues
 
 The coverage is very uneven, with some states only providing very recent

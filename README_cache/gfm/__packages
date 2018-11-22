@@ -1,0 +1,14 @@
+base
+methods
+devtools
+usethis
+datasets
+utils
+grDevices
+graphics
+stats
+ozbabynames
+ggplot2
+dplyr
+bindrcpp
+gganimate
