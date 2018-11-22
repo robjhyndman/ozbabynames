@@ -40,8 +40,8 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 
-ozbabynames_2016_top_10 <- ozbabynames %>%
-  filter(year == 2016) %>%
+ozbabynames_1952_top_10 <- ozbabynames %>%
+  filter(year == 1952) %>%
   group_by(sex, name) %>%
   summarise(count = sum(count)) %>%
   arrange(-count) %>%
@@ -49,7 +49,7 @@ ozbabynames_2016_top_10 <- ozbabynames %>%
   ungroup()
 #> Selecting by count
 
-ggplot(ozbabynames_2016_top_10,
+ggplot(ozbabynames_1952_top_10,
        aes(x = reorder(name, count),
            y = count,
            group = sex)) +
@@ -58,7 +58,7 @@ ggplot(ozbabynames_2016_top_10,
              scales = "free_y") +
   coord_flip() +
   ylab("Count") + xlab("Name") +
-  ggtitle("Top ten male and female names in 2016")
+  ggtitle("Top ten male and female names in 1952")
 ```
 
 <img src="man/figures/README-example-plot-1.png" width="100%" />
