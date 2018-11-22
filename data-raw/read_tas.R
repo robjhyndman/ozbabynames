@@ -37,6 +37,8 @@ tas3 <- readxl::read_xlsx("data-raw/tas/top-baby-names-for-2016.xlsx") %>%
   mutate(sex = c(rep("female", 134), NA, rep("male", 144))) %>%
   filter(!is.na(sex))
 
-tas <- bind_rows(tas1f, tas1m, tas2f, tas2m, tas3)
+tas <- bind_rows(tas1f, tas1m, tas2f, tas2m, tas3) %>%
+  rename(count = number) %>%
+  select(name, sex, year, count)
 
-usethis::use_data(tas)
+usethis::use_data(tas, overwrite=TRUE)
