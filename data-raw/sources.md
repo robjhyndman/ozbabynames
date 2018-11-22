@@ -22,7 +22,6 @@ https://data.qld.gov.au/dataset/top-100-baby-names
 
 ## NT
 https://nt.gov.au/law/bdm/popular-baby-names
-- have requested info via phone. 
 
 ## ACT
 https://www.accesscanberra.act.gov.au/app/answers/detail/a_id/1693/#!tabs-5a
