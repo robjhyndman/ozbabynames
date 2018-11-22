@@ -9,6 +9,9 @@ remDr <- remoteDriver(
   browserName = "firefox"
 )
 
+# Need to run selenium docker container
+# docker run -d -p 4445:4444 selenium/standalone-firefox:2.53.1
+
 remDr$open()
 remDr$navigate("https://bdm.justice.wa.gov.au/_apps/BabyNames/Default.aspx")
 remDr$getCurrentUrl()
@@ -35,4 +38,12 @@ wa <- map_dfr(years[-1], function(year){
     mutate(year = year)
 })
 
-usethis::use_data(wa)
+wa <- wa %>%
+  as_tibble() %>%
+  select(Name, sex, year, Occurence) %>%
+  rename(count = "Occurence") %>%
+  rename_all(tolower) %>%
+  mutate(
+    year=as.integer(year)
+  )
+
