@@ -122,9 +122,43 @@ class: inverse, center, middle
 
 ---
 
+# QLD
+
+.pull-left[
+# The good
+- (Mostly) tidy data structures
+]
+
+--
+
+.pull-right[
+# The worse
+- Inconsistent data structures
+]
+
+---
+
 # TAS
 
 [![tas web](resources/web_tas.png)](https://data.gov.au/dataset/0ec6f374-8b54-4500-ae40-97f39bba9036)
+
+---
+
+# TAS
+
+.pull-left[
+# The good
+- (Mostly) tidy data structures
+]
+
+--
+
+.pull-right[
+# The awful
+- Inconsistent data structures
+- Some missing column names
+]
+
 
 ---
 
@@ -134,9 +168,86 @@ class: inverse, center, middle
 
 ---
 
+# SA
+
+.pull-left[
+# The good
+- (Mostly) tidy data structures
+]
+
+--
+
+.pull-right[
+# The horrible
+- Inconsistent file names
+- "BABY" name, breaking the CSV!
+]
+
+--
+
+&lt;br&gt;
+ 
+
+
+```
+## ../data-raw/sa/female_cy1947_top.csv                    ../data-raw/sa/female_cy1946_top.csv                    
+## ../data-raw/sa/female_cy1945_top.csv                    ../data-raw/sa/female_cy1944_top.csv                    
+## ../data-raw/sa/cusersjacksm01desktopmalecy2017top.csv   ../data-raw/sa/cusersjacksm01desktopfemalecy2017top.csv
+```
+
+--
+
+sa/female_cy1953_top.csv, line 450
+&gt; ""BABY"","1","=449"
+
+---
+
+# NSW
+
+[![nsw web](resources/web_nsw.png)](https://www.bdm.nsw.gov.au/Pages/about-us/facts-statistics.aspx#Popularbabynames)
+
+---
+
+# NSW
+
+.pull-left[
+# The good
+- Consistent data structure
+]
+
+--
+
+.pull-right[
+# It's not like you threw up in the washing machine?
+- PDF tables!
+- Untidy data structures
+]
+
+---
+
 # NT
 
 [![nt web](resources/web_nt.png)](https://nt.gov.au/law/bdm/popular-baby-names)
+
+---
+
+# NT
+
+.pull-left[
+# The good
+- Consistent structure
+- Single webpage
+]
+
+--
+
+.pull-right[
+# The horrific
+- No downloadable data
+- Dirty data
+- Missing years
+]
+
 
 ---
 
@@ -156,9 +267,45 @@ class: inverse, center, middle
 
 ---
 
+# WA
+
+.pull-left[
+# The good
+- The data exists
+]
+
+--
+
+.pull-right[
+# The dreadful
+- No downloadable data
+- Javascript data app abomination
+]
+
+
+---
+
 # ACT
 
 [![act web](resources/web_act.png)](https://www.accesscanberra.act.gov.au/app/answers/detail/a_id/1693/#!tabs-5a)
+
+---
+
+# ACT
+
+.pull-left[
+# The good
+- ... consistent?
+]
+
+--
+
+.pull-right[
+# The abomination
+- No downloadable data
+- No count data
+- Missing years
+]
     </textarea>
 <script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

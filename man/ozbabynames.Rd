@@ -23,31 +23,21 @@ South Australia has by far the best data, with full coverage of all names back t
 head(ozbabynames)
 
 # Plot most popular names in 2016
-names2016 <- ozbabynames \%>\%
+library(ggplot2)
+library(dplyr)
+ozbabynames \%>\%
 filter(year==2016) \%>\%
-  group_by(name,sex) \%>\%
+  group_by(sex,name) \%>\%
   summarise(count = sum(count)) \%>\%
-  ungroup()
-
-names2016 \%>\%
-  filter(sex=="Male") \%>\%
   arrange(-count) \%>\%
-  head(10) \%>\%
-  ggplot(aes(x=reorder(name, count), y=count)) +
+  top_n(10) \%>\%
+  ungroup() \%>\%
+  ggplot(aes(x=reorder(name, count), y=count, group=sex)) +
     geom_bar(stat='identity') +
+    facet_grid(sex ~ ., scales = "free_y") +
     coord_flip() +
     ylab("Count") + xlab("Name") +
-    ggtitle("Most popular male names for 2016")
-
-names2016 \%>\%
-  filter(sex=="Female") \%>\%
-  arrange(-count) \%>\%
-  head(10) \%>\%
-  ggplot(aes(x=reorder(name, count), y=count)) +
-    geom_bar(stat='identity') +
-    coord_flip() +
-    ylab("Count") + xlab("Name") +
-    ggtitle("Most popular female names for 2016")
+    ggtitle("Top ten male and female names in 2016")
 
 }
 \keyword{datasets}

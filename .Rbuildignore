@@ -1,3 +1,5 @@
+^README\.Rmd$
 ^ozbabynames\.Rproj$
 ^\.Rproj\.user$
 presentation
+data-raw

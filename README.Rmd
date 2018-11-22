@@ -1,0 +1,84 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# ozbabynames
+
+The ozbabynames package provides the dataset `ozbabynames`. This contains
+popular Australian baby names by sex, state and year. 
+
+```{r print-oz-babynames}
+library(ozbabynames)
+head(ozbabynames)
+```
+
+## Installation
+
+You can install the released version of ozbabynames from github:
+
+```{r install, eval = FALSE}
+install_github("ropenscilabs/ozbabynames")
+```
+
+## Example usage
+
+```{r example-plot}
+library(ggplot2)
+library(dplyr)
+
+ozbabynames_1952_top_10 <- ozbabynames %>%
+  filter(year == 1952) %>%
+  group_by(sex, name) %>%
+  summarise(count = sum(count)) %>%
+  arrange(-count) %>%
+  top_n(10) %>%
+  ungroup()
+
+ggplot(ozbabynames_1952_top_10,
+       aes(x = reorder(name, count),
+           y = count,
+           group = sex)) +
+  geom_col() +
+  facet_grid(sex ~ ., 
+             scales = "free_y") +
+  coord_flip() +
+  ylab("Count") + xlab("Name") +
+  ggtitle("Top ten male and female names in 1952")
+```
+
+And let's look at the popularity of the package author names, "Rob", "Mitchell", "Nicholas", and "Jessie", as well as some similar names.
+
+```{r explore-author-names}
+author_names <- c("Robin", "Robert", "Mitchell", "Nicholas", "Jessie", "Jessica")
+
+ozbabynames %>%
+  filter(name %in% author_names) %>%
+  ggplot(aes(x = year, 
+             y = count,
+             colour = name)) +
+  geom_line() +
+  theme_bw() +
+  facet_wrap(~name,
+             scales = "free_y") +
+  theme(legend.position = "none")
+
+```
+
+
+## Known Issues
+
+The coverage is very
+uneven, with some states only providing very recent data, and some states only
+providing the top 50 or 100 names. The ACT do not provide counts, and so no ACT
+data are included. South Australia has by far the best data, with full coverage
+of all names back to 1944.
