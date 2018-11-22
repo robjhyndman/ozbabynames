@@ -83,7 +83,7 @@ nsw_names_1970s <- extract_nsw_babynames(
   year_number = 1979:1970)
 
 nsw_names_1980s <- extract_nsw_babynames(
-  path = "data-raw/nsw/stats-names-1970s.pdf",
+  path = "data-raw/nsw/stats-names-1980s.pdf",
   pages = 1:10,
   year_number = 1989:1980)
 
@@ -102,6 +102,7 @@ nsw_names_2010s <- extract_nsw_babynames(
   pages = 1:8,
   year_number = 2017:2010)
 
+## data checking against PDFs
 head(nsw_names_1950s)
 tail(nsw_names_1950s)
 
@@ -114,6 +115,11 @@ tail(nsw_names_1970s)
 head(nsw_names_1980s)
 tail(nsw_names_1980s)
 
-nsw_names_1990s
-nsw_names_2000s
-nsw_names_2010s
+head(nsw_names_1990s)
+tail(nsw_names_1990s)
+
+head(nsw_names_2000s)
+tail(nsw_names_2000s)
+
+head(nsw_names_2010s)
+tail(nsw_names_2010s)
