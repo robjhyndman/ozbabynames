@@ -56,6 +56,25 @@ ggplot(ozbabynames_1952_top_10,
   ggtitle("Top ten male and female names in 1952")
 ```
 
+And let's look at the popularity of the package author names, "Rob", "Mitchell", "Nicholas", and "Jessie", as well as some similar names.
+
+```{r explore-author-names}
+author_names <- c("Robin", "Robert", "Mitchell", "Nicholas", "Jessie", "Jessica")
+
+ozbabynames %>%
+  filter(name %in% author_names) %>%
+  ggplot(aes(x = year, 
+             y = count,
+             colour = name)) +
+  geom_line() +
+  theme_bw() +
+  facet_wrap(~name,
+             scales = "free_y") +
+  theme(legend.position = "none")
+
+```
+
+
 ## Known Issues
 
 The coverage is very

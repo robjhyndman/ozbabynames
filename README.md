@@ -63,6 +63,27 @@ ggplot(ozbabynames_1952_top_10,
 
 <img src="man/figures/README-example-plot-1.png" width="100%" />
 
+And let’s look at the popularity of the package author names, “Rob”,
+“Mitchell”, “Nicholas”, and “Jessie”, as well as some similar
+names.
+
+``` r
+author_names <- c("Robin", "Robert", "Mitchell", "Nicholas", "Jessie", "Jessica")
+
+ozbabynames %>%
+  filter(name %in% author_names) %>%
+  ggplot(aes(x = year, 
+             y = count,
+             colour = name)) +
+  geom_line() +
+  theme_bw() +
+  facet_wrap(~name,
+             scales = "free_y") +
+  theme(legend.position = "none")
+```
+
+<img src="man/figures/README-explore-author-names-1.png" width="100%" />
+
 ## Known Issues
 
 The coverage is very uneven, with some states only providing very recent
