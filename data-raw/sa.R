@@ -3,22 +3,20 @@ library(tidyverse)
 library(fs)
 
 # Fix files
-sa <- map_dfr(fs::dir_ls("data-raw/sa"), function(x){
-  writeLines(gsub('""', '"', readLines("data-raw/sa/female_cy1953_top.csv")), tmpfile <- tempfile())
-  out <- read_csv(tmpfile, col_names = c("Name", "Amount", "Position"), skip = 1)
-  out$sex <- factor(grepl("female", x), levels = c(TRUE, FALSE), labels = c("Female", "Male"))
-  out$year <- gsub("[^0-9.]", "", x)
-  out$year <- substr(out$year, nchar(out$year) - 4, nchar(out$year))
+read_sa <- function(x) {
+  writeLines(gsub('""', '"', readLines(x)), tmpfile <- tempfile())
+  out <- read_csv(tmpfile, col_names = c("Name", "Amount", "Position"), skip = 1) %>%
+    rename_all(tolower) %>%
+    mutate(
+      sex = ifelse(grepl("female", x), "Female", "Male"),
+      year = gsub("[^0-9.]", "", x),
+      year = substr(year, nchar(year) - 4, nchar(year)),
+      year = as.integer(year),
+      name = str_to_title(name)
+      ) %>%
+    rename(count = "amount") %>%
+    select(name, sex, year, count)
   out
-})
-
-sa <- sa %>%
-  rename_all(tolower) %>%
-  rename(count = "amount") %>%
-  select(name, sex, year, count) %>%
-  mutate(
-    sex = as.character(sex),
-    year = as.integer(year),
-    name = str_to_title(name)
-  )
+}
+sa <- map_dfr(fs::dir_ls("data-raw/sa"), read_sa)
 
