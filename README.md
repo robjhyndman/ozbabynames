@@ -72,6 +72,8 @@ author_names <- c("Robin", "Robert", "Mitchell", "Nicholas", "Jessie", "Jessica"
 
 ozbabynames %>%
   filter(name %in% author_names) %>%
+  group_by(name, year) %>% 
+  summarise(count = sum(count)) %>% 
   ggplot(aes(x = year, 
              y = count,
              colour = name)) +

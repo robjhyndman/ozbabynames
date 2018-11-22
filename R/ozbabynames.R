@@ -30,9 +30,5 @@
 #'     coord_flip() +
 #'     ylab("Count") + xlab("Name") +
 #'     ggtitle("Top ten male and female names in 2016")
-
-
-
-
 #'
 "ozbabynames"
