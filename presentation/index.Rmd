@@ -41,7 +41,66 @@ options(htmltools.dir.version = FALSE, width = 120)
 23 November 2018
 ]
 
+
 ---
+class: inverse, center, middle
+
+.title[the what & why]
+
+---
+# the what
+
+- Australia version of the [babynames packages](https://github.com/hadley/babynames) 
+
+    
+# the why 
+- Australian
+- everyone has a name, generally non-political, contain some geospatial information (state), multiple years (time series) and the data is well recorded and maintained. 
+
+---
+class: inverse, center, middle
+
+.title["This will be an easy first project for the Runconf2018. We can contributes to available Australian datasets and we'll have it finished by lunchtime"]
+
+
+
+---
+class: inverse, center, middle
+
+.title[lets get started]
+
+---
+# step 1
+
+
+1. Australian Gov [Open Data Portal](https://search.data.gov.au/). 
+  * Surely the data is already there. We'll just clean it up and put it into a package. 
+
+[![web open data](resources/web_open_data.png)](https://search.data.gov.au/)
+
+---
+class: inverse, center, middle
+
+.title[hmmm nope!!]
+
+
+---
+
+
+[![baby name search](resources/babyname_search.png)](https://search.data.gov.au/search?q=baby%20names%20)
+
+---
+# step 2
+
+2. Births, Deaths & Marriages for each state..... 
+  * It's their job. 
+  * Australia has adopted the open data charter 
+---
+
+[![open data charter](resources/open_data_charter.png)](https://blog.data.gov.au/news-media/blog/australia-adopts-international-open-data-charter)
+
+---
+
 class: inverse, center, middle
 
 .title[the data]
