@@ -15,6 +15,8 @@
 #' head(ozbabynames)
 #'
 #' # Plot most popular names in 2016
+#' library(ggplot2)
+#' library(dplyr)
 #' names2016 <- ozbabynames %>%
 #' filter(year==2016) %>%
 #'   group_by(name,sex) %>%
