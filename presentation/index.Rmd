@@ -1,0 +1,119 @@
+---
+title: "ozbabynames"
+subtitle: "Australian baby names"
+author: "Rob Hyndman"
+date: '30/10/2018'
+output:
+  xaringan::moon_reader:
+    chakra: libs/remark-latest.min.js
+    css: ["libs/slides.css",  "libs/animate.css"]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      ratio: '16:9'
+      highlightLines: true
+      countIncrementalSlides: false
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+class: inverse
+
+```{r setup, include=FALSE}
+library(fontawesome)
+library(tidyverse)
+options(htmltools.dir.version = FALSE, width = 120)
+```
+
+.title[ozbabynames]
+.sticker-float[![ozbabynames](resources/ozbabynames.svg)]
+
+## Tidying Australian baby names
+
+.bottom[
+- Mitchell O'Hara-Wild (`r fa("twitter", fill="#1da1f2")`[@mitchoharawild](https://twitter.com/mitchoharawild))
+- Rob Hyndman (`r fa("twitter", fill="#1da1f2")`[@robjhyndman](https://twitter.com/robjhyndman/))
+- Jessie Roberts (`r fa("twitter", fill="#1da1f2")`[@_jessie_roberts](https://twitter.com/_jessie_roberts))
+- Nick Tierney (`r fa("twitter", fill="#1da1f2")`[@nj_tierney](https://twitter.com/nj_tierney/))
+
+23 November 2018
+]
+
+---
+class: inverse, center, middle
+
+.title[the data]
+
+---
+
+# the data
+
+```{r data}
+mtcars
+```
+
+
+---
+class: inverse, center, middle
+
+.title[the journey]
+
+---
+
+# VIC
+
+[![vic web](resources/web_vic.png)](https://www.bdm.vic.gov.au/births/naming-your-child/popular-baby-names-in-victoria)
+
+---
+
+# QLD
+
+[![qld web](resources/web_qld.png)](https://data.qld.gov.au/dataset/top-100-baby-names)
+
+---
+
+# QLD
+
+![qld data](resources/data_qld.png)
+
+---
+
+# TAS
+
+[![tas web](resources/web_tas.png)](https://data.gov.au/dataset/0ec6f374-8b54-4500-ae40-97f39bba9036)
+
+---
+
+# SA
+
+[![sa web](resources/web_sa.png)](https://data.sa.gov.au/data/dataset/popular-baby-names)
+
+---
+
+# NT
+
+[![nt web](resources/web_nt.png)](https://nt.gov.au/law/bdm/popular-baby-names)
+
+---
+
+# WA
+
+[![wa web](resources/web_wa1.png)](https://bdm.justice.wa.gov.au/_apps/BabyNames/Default.aspx)
+---
+
+# WA
+
+[![wa web](resources/web_wa2.png)](https://bdm.justice.wa.gov.au/_apps/BabyNames/Default.aspx)
+---
+
+# WA
+
+[![wa web](resources/web_wa3.png)](https://bdm.justice.wa.gov.au/_apps/BabyNames/Default.aspx)
+
+---
+
+# ACT
+
+[![act web](resources/web_act.png)](https://www.accesscanberra.act.gov.au/app/answers/detail/a_id/1693/#!tabs-5a)
