@@ -28,7 +28,8 @@
 #'     geom_bar(stat='identity') +
 #'     facet_grid(sex ~ ., scales = "free_y") +
 #'     coord_flip() +
-#'     ylab("Count") + xlab("Name")
+#'     ylab("Count") + xlab("Name") +
+#'     ggtitle("Top ten male and female names in 2016")
 
 
 
