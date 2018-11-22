@@ -102,24 +102,20 @@ nsw_names_2010s <- extract_nsw_babynames(
   pages = 1:8,
   year_number = 2017:2010)
 
-## data checking against PDFs
-head(nsw_names_1950s)
-tail(nsw_names_1950s)
 
-head(nsw_names_1960s)
-tail(nsw_names_1960s)
+nsw <- bind_rows(
+    nsw_names_1950s,
+    nsw_names_1960s,
+    nsw_names_1970s,
+    nsw_names_1980s,
+    nsw_names_1990s,
+    nsw_names_2000s,
+    nsw_names_2010s) %>%
+  select(name, sex, year, count) %>%
+  mutate(
+    state="New South Wales",
+    sex = recode(sex,
+          boys = "Male",
+          girls = "Female"))
 
-head(nsw_names_1970s)
-tail(nsw_names_1970s)
 
-head(nsw_names_1980s)
-tail(nsw_names_1980s)
-
-head(nsw_names_1990s)
-tail(nsw_names_1990s)
-
-head(nsw_names_2000s)
-tail(nsw_names_2000s)
-
-head(nsw_names_2010s)
-tail(nsw_names_2010s)
