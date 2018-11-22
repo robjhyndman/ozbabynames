@@ -23,4 +23,3 @@ vic <- vic %>%
   mutate(year = as.integer(year),
          count = as.integer(count))
 
-usethis::use_data(vic, overwrite=TRUE)

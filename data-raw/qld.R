@@ -26,4 +26,3 @@ qld <- map_dfr(fs::dir_ls("data-raw/qld"), function(x){
   mutate(year = as.integer(year)) %>%
   filter(!is.na(name))
 
-usethis::use_data(qld, overwrite = TRUE)

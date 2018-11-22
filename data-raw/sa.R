@@ -22,4 +22,3 @@ sa <- sa %>%
     name = str_to_title(name)
   )
 
-usethis::use_data(sa, overwrite=TRUE)

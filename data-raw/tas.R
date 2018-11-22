@@ -46,4 +46,3 @@ tas <- bind_rows(tas1f, tas1m, tas2f, tas2m, tas3) %>%
     count = as.integer(count)
   )
 
-usethis::use_data(tas, overwrite=TRUE)
