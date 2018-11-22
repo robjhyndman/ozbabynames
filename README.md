@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ozbabynames
+# ozbabynames <img src="man/figures/logo.png" align="right" />
 
 The ozbabynames package provides the dataset `ozbabynames`. This
 contains popular Australian baby names by sex, state and year.
