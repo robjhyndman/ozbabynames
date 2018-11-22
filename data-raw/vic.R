@@ -2,7 +2,6 @@ library(purrr)
 library(tidyverse)
 library(readxl)
 
-
 # Fix files
 vic <- map_dfr(fs::dir_ls("data-raw/vic"), function(x){
   fname <- tools::file_path_sans_ext(x)
@@ -22,4 +21,3 @@ vic <- vic %>%
   select(name, sex, year, count) %>%
   mutate(year = as.integer(year),
          count = as.integer(count))
-
