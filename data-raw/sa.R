@@ -12,4 +12,14 @@ sa <- map_dfr(fs::dir_ls("data-raw/sa"), function(x){
   out
 })
 
-usethis::use_data(sa)
+sa <- sa %>%
+  rename_all(tolower) %>%
+  rename(count = "amount") %>%
+  select(name, sex, year, count) %>%
+  mutate(
+    sex = as.character(sex),
+    year = as.integer(year),
+    name = str_to_title(name)
+  )
+
+usethis::use_data(sa, overwrite=TRUE)

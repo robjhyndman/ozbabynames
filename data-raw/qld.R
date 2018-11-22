@@ -22,7 +22,8 @@ qld <- map_dfr(fs::dir_ls("data-raw/qld"), function(x){
   }
 }) %>%
   rename(sex = Sex, name = Name, year = Year, count = Count) %>%
-  select(sex, name, year, count) %>%
-  mutate(sex = as.factor(sex))
+  select(name, sex, year, count) %>%
+  mutate(year = as.integer(year)) %>%
+  filter(!is.na(name))
 
 usethis::use_data(qld, overwrite = TRUE)

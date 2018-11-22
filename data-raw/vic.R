@@ -17,4 +17,10 @@ vic <- map_dfr(fs::dir_ls("data-raw/vic"), function(x){
     mutate(year = substr(fname, nchar(fname)-3, nchar(fname)))
 })
 
-usethis::use_data(vic)
+vic <- vic %>%
+  rename_all(tolower) %>%
+  select(name, sex, year, count) %>%
+  mutate(year = as.integer(year),
+         count = as.integer(count))
+
+usethis::use_data(vic, overwrite=TRUE)
