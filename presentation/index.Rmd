@@ -52,12 +52,13 @@ class: inverse, center, middle
 # the why
 
 - the US [babynames packages](https://github.com/hadley/babynames) created by Hadley has an average of 98 downloads a day, and 15 downloads in Australia every 10 days. 
-- Great dataset: 
-    - everyone has a name, 
-    - non-political, 
-    - contains geospatial information (state), 
+- Great dataset for demonstration and teaching: 
+    - everyone has a name
+    - non-political 
+    - contains geospatial information (state) 
     - contains time data (years) 
-    - the data is well recorded and maintained. 
+    - the data is well recorded and maintained
+    - fun
   
   
 .center["Wouldn't it be great if we had an Australian version."]
@@ -358,3 +359,11 @@ sa/female_cy1953_top.csv, line 450
 - No count data
 - Missing years
 ]
+
+---
+# Summary
+
+1. we finished it - but not before lunchtime.
+2. Australia's Open Data portal is not so open. 
+3. next step: write a post-mortem of our journey through Australian open data as a blog post, report or article.
+4. audit the QLD Open Data Portal for adherence to the Australian Open Data Charter.
