@@ -218,3 +218,10 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
     left: 0 !important;
   }
 }
+
+.smaller_image img{
+  height:400px;
+}
+.smaller_image2 img{
+  height:350pxpx;
+}
