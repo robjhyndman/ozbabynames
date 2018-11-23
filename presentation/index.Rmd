@@ -130,9 +130,20 @@ class: inverse, center, middle
 
 # the data
 
-```{r data}
-head(ozbabynames)
+```{r data, echo=FALSE}
+#head(ozbabynames)
 ```
+
+
+| State | date range  | available data  |variables|
+| ----- |:--------:| :-----------------|:----|
+|QLD|2006 - 2017 |counts for top 10 names |name, sex, year, count, state |
+|NSW|1952 - 2017 |counts for top 10 names |" "|
+|ACT|- | ranked top 10 names each year|" "|
+|VIC|2008 - 2017|counts for top 10 names|" "|
+|SA|1944 - 2017|counts of all names|" "|
+|WA|1930 - 2016|counts for top 10 names|" "|
+|TAS|2010 - 2016|counts for top 10 names|" "|
 
 
 ---
@@ -367,3 +378,17 @@ sa/female_cy1953_top.csv, line 450
 2. Australia's Open Data portal is not so 'open'. 
 3. next step: write a post-mortem of our journey through Australian open data as a blog post, report or article.
 4. audit the QLD Open Data Portal for adherence to the Australian Open Data Charter.
+---
+
+```{r diversity, echo=FALSE, message=FALSE}
+
+all <- ozbabynames %>% 
+  filter(count >=40)
+
+diversity <- ggplot(all, aes(year, count)) + geom_point() + ggtitle("Counts of most popular names over time") 
+
+diversity 
+
+```
+
+

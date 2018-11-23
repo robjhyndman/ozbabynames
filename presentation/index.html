@@ -117,21 +117,17 @@ class: inverse, center, middle
 # the data
 
 
-```r
-head(ozbabynames)
-```
 
-```
-## # A tibble: 6 x 5
-##   name      sex     year count state          
-##   &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;chr&gt;          
-## 1 Charlotte Female  2017   577 New South Wales
-## 2 Olivia    Female  2017   550 New South Wales
-## 3 Ava       Female  2017   464 New South Wales
-## 4 Amelia    Female  2017   442 New South Wales
-## 5 Mia       Female  2017   418 New South Wales
-## 6 Isla      Female  2017   392 New South Wales
-```
+
+| State | date range  | available data  |variables|
+| ----- |:--------:| :-----------------|:----|
+|QLD|2006 - 2017 |counts for top 10 names |name, sex, year, count, state |
+|NSW|1952 - 2017 |counts for top 10 names |" "|
+|ACT|- | ranked top 10 names each year|" "|
+|VIC|2008 - 2017|counts for top 10 names|" "|
+|SA|1944 - 2017|counts of all names|" "|
+|WA|1930 - 2016|counts for top 10 names|" "|
+|TAS|2010 - 2016|counts for top 10 names|" "|
 
 
 ---
@@ -369,6 +365,9 @@ sa/female_cy1953_top.csv, line 450
 2. Australia's Open Data portal is not so 'open'. 
 3. next step: write a post-mortem of our journey through Australian open data as a blog post, report or article.
 4. audit the QLD Open Data Portal for adherence to the Australian Open Data Charter.
+---
+
+![](index_files/figure-html/diversity-1.png)&lt;!-- --&gt;
     </textarea>
 <script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
