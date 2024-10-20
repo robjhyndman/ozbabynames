@@ -18,3 +18,5 @@ Suggests:
     ggplot2,
     dplyr
 VignetteBuilder: knitr
+URL: https://github.com/robjhyndman/ozbabynames
+BugReports: https://github.com/robjhyndman/ozbabynames/issues
