@@ -5,7 +5,8 @@ Authors@R: c(
   person("Rob", "Hyndman", email="Rob.Hyndman@monash.edu", role=c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-2140-5352")),
   person("Mitchell", "O'Hara-Wild", role="aut", comment=c(ORCID = "0000-0001-6729-7695")),
   person("Jessie", "Roberts", role="aut"),
-  person("Nick", "Tierney", role="aut", comment=c(ORCID="0000-0003-1460-8722")))
+  person("Nick", "Tierney", role="aut", comment=c(ORCID="0000-0003-1460-8722")),
+  person("Anna", "Fergusson", role="ctb", comment=c(ORCID="0000-0002-1987-8150")))
 Description: Data on the most popular baby names in Australia.
 Depends: R (>= 2.10)
 License: GPL-3
