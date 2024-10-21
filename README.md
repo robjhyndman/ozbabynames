@@ -10,12 +10,12 @@ contains popular Australian baby names by sex, state and year.
 library(ozbabynames)
 head(ozbabynames)
 #>        name    sex year count           state
-#> 1 Charlotte Female 2017   577 New South Wales
-#> 2    Olivia Female 2017   550 New South Wales
-#> 3       Ava Female 2017   464 New South Wales
-#> 4    Amelia Female 2017   442 New South Wales
-#> 5       Mia Female 2017   418 New South Wales
-#> 6      Isla Female 2017   392 New South Wales
+#> 1      Isla Female 2023   403 New South Wales
+#> 2    Amelia Female 2023   399 New South Wales
+#> 3    Olivia Female 2023   381 New South Wales
+#> 4       Mia Female 2023   347 New South Wales
+#> 5 Charlotte Female 2023   338 New South Wales
+#> 6       Ava Female 2023   284 New South Wales
 ```
 
 ## Installation
