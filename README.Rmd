@@ -9,7 +9,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
@@ -64,7 +66,7 @@ ggplot(ozbabynames_1952_top_10,
 
 And let's look at the popularity of the package author names, "Rob", "Mitchell", "Nicholas", and "Jessie", as well as some similar names.
 
-```{r explore-author-names}
+```{r explore-author-names, message=FALSE, warning=FALSE}
 author_names <- c("Robin", "Robert", "Mitchell", "Nicholas", "Jessie", "Jessica")
 
 ozbabynames |>

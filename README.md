@@ -40,14 +40,6 @@ install_github("ropenscilabs/ozbabynames")
 ``` r
 library(ggplot2)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 
 ozbabynames_1952_top_10 <- ozbabynames |>
   filter(year == 1952) |>
@@ -56,9 +48,6 @@ ozbabynames_1952_top_10 <- ozbabynames |>
   arrange(-count) |>
   top_n(10) |>
   ungroup()
-#> `summarise()` has grouped output by 'sex'. You can override using the `.groups`
-#> argument.
-#> Selecting by count
 
 ggplot(ozbabynames_1952_top_10,
        aes(x = reorder(name, count),
@@ -92,8 +81,6 @@ ozbabynames |>
   facet_wrap(~name,
              scales = "free_y") +
   theme(legend.position = "none")
-#> `summarise()` has grouped output by 'name'. You can override using the
-#> `.groups` argument.
 ```
 
 <img src="man/figures/README-explore-author-names-1.png" width="100%" />
