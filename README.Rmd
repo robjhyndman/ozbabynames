@@ -31,6 +31,12 @@ You can install the released version of ozbabynames from github:
 install_github("ropenscilabs/ozbabynames")
 ```
 
+## Related packages
+
+* [babynames](https://hadley.github.io/babynames/) - US baby names from 1880 to 2017.
+* [nzbabynames](https://ekothe.github.io/nzbabynames/) - New Zealand baby names from 1900 to 2017.
+* [norwaynames](https://github.com/ekothe/norwaynames) - Norway baby names from 1880 to 2017.
+
 ## Example usage
 
 ```{r example-plot}
