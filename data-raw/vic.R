@@ -1,23 +1,7 @@
-library(purrr)
 library(tidyverse)
-library(readxl)
 
-# Fix files
-vic <- map_dfr(fs::dir_ls("data-raw/vic"), function(x){
-  fname <- tools::file_path_sans_ext(x)
-
-  out <- read_excel(x, skip = 2)
-  male <- out[1:3]
-  male$sex <- "Male"
-  female <- set_names(out[5:7], names(out)[1:3])
-  female$sex <- "Female"
-
-  rbind(male, female) %>%
-    mutate(year = substr(fname, nchar(fname)-3, nchar(fname)))
-})
-
-vic <- vic %>%
-  rename_all(tolower) %>%
-  select(name, sex, year, count) %>%
-  mutate(year = as.integer(year),
-         count = as.integer(count))
+vic <- read_csv("data-raw/vic/vic_babynames.csv") %>%
+  select(name, sex, year, number) %>%
+  rename(count = number) %>%
+  mutate(year = as.integer(year)) %>%
+  filter(!is.na(name))

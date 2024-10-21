@@ -4,41 +4,40 @@ library(utils)
 
 url <- 'https://nt.gov.au/law/bdm/popular-baby-names'
 webpage <- read_html(url)
-#extract year
-years_html <- html_nodes(webpage, '.btn') %>% html_text()
-years <- years_html[-(1:4)] %>% parse_number()
 
-#scrape names & occurences
-table_html <- html_nodes(webpage,'td , th , #h-476142 .btn')
-table_data <- html_text(table_html)
-ntmat <- matrix(table_data[-1], ncol=4, byrow=TRUE)
+year_info <- webpage %>%
+  html_elements(".card")
 
+bn_data <- map_df(1:length(year_info), function(i){
+  html <- year_info[i]
 
-ntf <- tibble(name=ntmat[,1],number=ntmat[,2]) %>% mutate(sex="F") %>%
-  mutate(
-    name = str_replace_all(name, "\r\n", ""),
-    number = str_replace_all(number, "\r\n", ""),
-    name = str_replace_all(name, " ", ""),
-    number = str_replace_all(number, " ", ""),
-    year = cumsum(number=="Occurrences"))
+  year <- html %>%
+    html_element('h2') %>%
+    html_text2() %>%
+    str_squish() %>%
+    str_remove_all("Popular names in ") %>%
+    as.numeric()
 
-ntm <- tibble(name=ntmat[,3],number=ntmat[,4]) %>% mutate(sex="M")%>%
-  mutate(
-    name = str_replace_all(name, "\r\n", ""),
-    number = str_replace_all(number, "\r\n", ""),
-    name = str_replace_all(name, " ", ""),
-    number = str_replace_all(number, " ", ""),
-    year = cumsum(number=="Occurrences"))
+  table_data <- html %>%
+    html_element('table') %>%
+    html_table() %>%
+    .[[1]]
 
+  table_female <- table_data %>%
+    select(1:2) %>%
+    mutate(sex = "Female") %>%
+    rename(name = 1,
+           number = 2)
 
-nt <- bind_rows(ntf, ntm) %>%
-  mutate(
-    year = c(years[ntf$year],years[ntm$year])
-  ) %>%
-  filter(number != "Occurrences")
+  table_male <- table_data %>%
+    select(3:4) %>%
+    mutate(sex = "Male") %>%
+    rename(name = 1,
+           number = 2)
 
+  bind_rows(table_male, table_female) %>%
+    mutate(year)
+})
 
-write.csv(nt, "nt_babynames.csv")
-
-
+write.csv(bn_data, here::here("data-raw/nt/nt_babynames.csv"))
 

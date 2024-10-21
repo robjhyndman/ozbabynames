@@ -4,7 +4,7 @@
 https://data.sa.gov.au/data/dataset/popular-baby-names
 
 ## NSW
-https://www.bdm.nsw.gov.au/Pages/about-us/facts-statistics.aspx#Popularbabynames
+https://data.nsw.gov.au/data/dataset/popular-baby-names-from-1952
 
 ## Tasmania
 https://data.gov.au/dataset/0ec6f374-8b54-4500-ae40-97f39bba9036
