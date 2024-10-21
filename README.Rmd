@@ -29,7 +29,7 @@ head(ozbabynames)
 You can install the released version of ozbabynames from github:
 
 ```{r install, eval = FALSE}
-install_github("ropenscilabs/ozbabynames")
+install_github("robjhyndman/ozbabynames")
 ```
 
 ## Related packages

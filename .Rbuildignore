@@ -8,3 +8,4 @@ hex
 ^docs$
 ^pkgdown$
 ^README_cache$
+.github

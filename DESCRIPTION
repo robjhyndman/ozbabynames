@@ -12,12 +12,9 @@ Depends: R (>= 2.10)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.3.2
 Suggests:
-    knitr,
-    rmarkdown,
     ggplot2,
     dplyr
-VignetteBuilder: knitr
 URL: https://github.com/robjhyndman/ozbabynames, https://pkg.robjhyndman.com/ozbabynames/
 BugReports: https://github.com/robjhyndman/ozbabynames/issues

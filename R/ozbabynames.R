@@ -17,13 +17,13 @@
 #' # Plot most popular names in 2016
 #' library(ggplot2)
 #' library(dplyr)
-#' ozbabynames %>%
-#' filter(year==2016) %>%
-#'   group_by(sex,name) %>%
-#'   summarise(count = sum(count)) %>%
-#'   arrange(-count) %>%
-#'   top_n(10) %>%
-#'   ungroup() %>%
+#' ozbabynames |>
+#' filter(year==2016) |>
+#'   group_by(sex,name) |>
+#'   summarise(count = sum(count)) |>
+#'   arrange(-count) |>
+#'   top_n(10) |>
+#'   ungroup() |>
 #'   ggplot(aes(x=reorder(name, count), y=count, group=sex)) +
 #'     geom_bar(stat='identity') +
 #'     facet_grid(sex ~ ., scales = "free_y") +
