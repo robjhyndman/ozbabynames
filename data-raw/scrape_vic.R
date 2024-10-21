@@ -11,7 +11,7 @@ year_info <- webpage %>%
   html_attr("href")
 
 bn_data <- map_df(1:length(year_info), function(i){
-  i <- 7
+
   year_url <- paste0("https://www.bdm.vic.gov.au", year_info[i])
   html <- year_url %>%
     read_html()
@@ -26,7 +26,8 @@ bn_data <- map_df(1:length(year_info), function(i){
     html_element('table') %>%
     html_table() %>%
     janitor::clean_names() %>%
-    select(-starts_with("position"))
+    select(-starts_with("position")) %>%
+    select(-starts_with("rank"))
 
   table_male <- table_data %>%
     select(1:2) %>%
@@ -41,7 +42,7 @@ bn_data <- map_df(1:length(year_info), function(i){
            number = 2)
 
   bind_rows(table_male, table_female) %>%
-    mutate(year)
+           mutate(year)
 })
 
 write_csv(bn_data, here::here("data-raw/vic/vic_babynames.csv"))
