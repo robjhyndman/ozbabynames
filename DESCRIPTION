@@ -1,6 +1,6 @@
 Package: ozbabynames
 Title: Australian Popular Baby Names
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
   person("Rob", "Hyndman", email="Rob.Hyndman@monash.edu", role=c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-2140-5352")),
   person("Mitchell", "O'Hara-Wild", role="aut", comment=c(ORCID = "0000-0001-6729-7695")),
