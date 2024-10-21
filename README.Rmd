@@ -15,8 +15,7 @@ knitr::opts_chunk$set(
 
 # ozbabynames <img src="man/figures/logo.png" align="right" />
 
-The ozbabynames package provides the dataset `ozbabynames`. This contains
-popular Australian baby names by sex, state and year. 
+The ozbabynames package provides the dataset `ozbabynames`. This contains popular Australian baby names by sex, state and year. 
 
 ```{r print-oz-babynames}
 library(ozbabynames)
@@ -43,12 +42,12 @@ install_github("ropenscilabs/ozbabynames")
 library(ggplot2)
 library(dplyr)
 
-ozbabynames_1952_top_10 <- ozbabynames %>%
-  filter(year == 1952) %>%
-  group_by(sex, name) %>%
-  summarise(count = sum(count)) %>%
-  arrange(-count) %>%
-  top_n(10) %>%
+ozbabynames_1952_top_10 <- ozbabynames |>
+  filter(year == 1952) |>
+  group_by(sex, name) |>
+  summarise(count = sum(count)) |>
+  arrange(-count) |>
+  top_n(10) |>
   ungroup()
 
 ggplot(ozbabynames_1952_top_10,
@@ -68,10 +67,10 @@ And let's look at the popularity of the package author names, "Rob", "Mitchell",
 ```{r explore-author-names}
 author_names <- c("Robin", "Robert", "Mitchell", "Nicholas", "Jessie", "Jessica")
 
-ozbabynames %>%
-  filter(name %in% author_names) %>%
-  group_by(name, year) %>% 
-  summarise(count = sum(count)) %>% 
+ozbabynames |>
+  filter(name %in% author_names) |>
+  group_by(name, year) |> 
+  summarise(count = sum(count)) |> 
   ggplot(aes(x = year, 
              y = count,
              colour = name)) +
@@ -84,23 +83,19 @@ ozbabynames %>%
 
 And let's see that animated
 
-```{r install gganimate, eval=FALSE}
-devtools::install_github('thomasp85/gganimate')
-```
-
 ```{r animate-explore-author-names, cache=TRUE}
 library(gganimate)
 
-ozbabynames %>%
-  filter(name %in% author_names) %>%
-  count(name,year, wt = count) %>%
+ozbabynames |>
+  filter(name %in% author_names) |>
+  count(name,year, wt = count) |>
   ggplot(aes(x = year, 
              y = n,
              colour = name,
              group = name,
              label = name,
              fill = name)) +
-  geom_line(size = 1, linetype = "dotted") +
+  geom_line(linewidth = 1, linetype = "dotted") +
   geom_label(colour = "white", alpha = 0.75, size =  5) +
   theme_bw() +
   theme(panel.grid = element_blank(),
@@ -112,16 +107,10 @@ ozbabynames %>%
   labs( title = "number of bubs dubbed in {frame_along} ",
         y = "n babies" ) +
   scale_y_log10(labels = scales::comma) +
-  transition_reveal(id = name, along = year) +
-  enter_grow(fade = TRUE) +
-  exit_shrink(fade = TRUE)
+  transition_reveal(along = year)
 ```
 
 
 ## Known Issues
 
-The coverage is very
-uneven, with some states only providing very recent data, and some states only
-providing the top 50 or 100 names. The ACT do not provide counts, and so no ACT
-data are included. South Australia has by far the best data, with full coverage
-of all names back to 1944.
+The coverage is very uneven, with some states only providing very recent data, and some states only providing the top 50 or 100 names. The ACT does not provide counts, and so no ACT data are included. South Australia has by far the best data, with full coverage of all names back to 1944.

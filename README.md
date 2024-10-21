@@ -26,6 +26,15 @@ You can install the released version of ozbabynames from github:
 install_github("ropenscilabs/ozbabynames")
 ```
 
+## Related packages
+
+- [babynames](https://hadley.github.io/babynames/) - US baby names from
+  1880 to 2017.
+- [nzbabynames](https://ekothe.github.io/nzbabynames/) - New Zealand
+  baby names from 1900 to 2017.
+- [norwaynames](https://github.com/ekothe/norwaynames) - Norway baby
+  names from 1880 to 2017.
+
 ## Example usage
 
 ``` r
@@ -40,13 +49,15 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 
-ozbabynames_1952_top_10 <- ozbabynames %>%
-  filter(year == 1952) %>%
-  group_by(sex, name) %>%
-  summarise(count = sum(count)) %>%
-  arrange(-count) %>%
-  top_n(10) %>%
+ozbabynames_1952_top_10 <- ozbabynames |>
+  filter(year == 1952) |>
+  group_by(sex, name) |>
+  summarise(count = sum(count)) |>
+  arrange(-count) |>
+  top_n(10) |>
   ungroup()
+#> `summarise()` has grouped output by 'sex'. You can override using the `.groups`
+#> argument.
 #> Selecting by count
 
 ggplot(ozbabynames_1952_top_10,
@@ -64,16 +75,15 @@ ggplot(ozbabynames_1952_top_10,
 <img src="man/figures/README-example-plot-1.png" width="100%" />
 
 And let’s look at the popularity of the package author names, “Rob”,
-“Mitchell”, “Nicholas”, and “Jessie”, as well as some similar
-names.
+“Mitchell”, “Nicholas”, and “Jessie”, as well as some similar names.
 
 ``` r
 author_names <- c("Robin", "Robert", "Mitchell", "Nicholas", "Jessie", "Jessica")
 
-ozbabynames %>%
-  filter(name %in% author_names) %>%
-  group_by(name, year) %>% 
-  summarise(count = sum(count)) %>% 
+ozbabynames |>
+  filter(name %in% author_names) |>
+  group_by(name, year) |> 
+  summarise(count = sum(count)) |> 
   ggplot(aes(x = year, 
              y = count,
              colour = name)) +
@@ -82,6 +92,8 @@ ozbabynames %>%
   facet_wrap(~name,
              scales = "free_y") +
   theme(legend.position = "none")
+#> `summarise()` has grouped output by 'name'. You can override using the
+#> `.groups` argument.
 ```
 
 <img src="man/figures/README-explore-author-names-1.png" width="100%" />
@@ -89,22 +101,18 @@ ozbabynames %>%
 And let’s see that animated
 
 ``` r
-devtools::install_github('thomasp85/gganimate')
-```
-
-``` r
 library(gganimate)
 
-ozbabynames %>%
-  filter(name %in% author_names) %>%
-  count(name,year, wt = count) %>%
+ozbabynames |>
+  filter(name %in% author_names) |>
+  count(name,year, wt = count) |>
   ggplot(aes(x = year, 
              y = n,
              colour = name,
              group = name,
              label = name,
              fill = name)) +
-  geom_line(size = 1, linetype = "dotted") +
+  geom_line(linewidth = 1, linetype = "dotted") +
   geom_label(colour = "white", alpha = 0.75, size =  5) +
   theme_bw() +
   theme(panel.grid = element_blank(),
@@ -116,9 +124,11 @@ ozbabynames %>%
   labs( title = "number of bubs dubbed in {frame_along} ",
         y = "n babies" ) +
   scale_y_log10(labels = scales::comma) +
-  transition_reveal(id = name, along = year) +
-  enter_grow(fade = TRUE) +
-  exit_shrink(fade = TRUE)
+  transition_reveal(along = year)
+#> `geom_line()`: Each group consists of only one observation.
+#> ℹ Do you need to adjust the group aesthetic?
+#> `geom_line()`: Each group consists of only one observation.
+#> ℹ Do you need to adjust the group aesthetic?
 ```
 
 <img src="man/figures/README-animate-explore-author-names-1.gif" width="100%" />
@@ -126,6 +136,7 @@ ozbabynames %>%
 ## Known Issues
 
 The coverage is very uneven, with some states only providing very recent
-data, and some states only providing the top 50 or 100 names. The ACT do
-not provide counts, and so no ACT data are included. South Australia has
-by far the best data, with full coverage of all names back to 1944.
+data, and some states only providing the top 50 or 100 names. The ACT
+does not provide counts, and so no ACT data are included. South
+Australia has by far the best data, with full coverage of all names back
+to 1944.
