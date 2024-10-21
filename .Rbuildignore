@@ -4,3 +4,6 @@
 presentation
 data-raw
 hex
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
