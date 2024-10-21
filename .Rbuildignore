@@ -8,3 +8,5 @@ hex
 ^docs$
 ^pkgdown$
 ^README_cache$
+.github
+^cran-comments\.md$
