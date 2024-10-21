@@ -20,10 +20,16 @@ head(ozbabynames)
 
 ## Installation
 
-You can install the released version of ozbabynames from github:
+You can install the development version of ozbabynames from github:
 
 ``` r
 install_github("robjhyndman/ozbabynames")
+```
+
+The CRAN version can be installed using:
+
+``` r
+install.packages("ozbabynames")
 ```
 
 ## Related packages

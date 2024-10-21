@@ -9,3 +9,4 @@ hex
 ^pkgdown$
 ^README_cache$
 .github
+^cran-comments\.md$
