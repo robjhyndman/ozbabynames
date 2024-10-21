@@ -125,10 +125,6 @@ ozbabynames |>
         y = "n babies" ) +
   scale_y_log10(labels = scales::comma) +
   transition_reveal(along = year)
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
 ```
 
 <img src="man/figures/README-animate-explore-author-names-1.gif" width="100%" />

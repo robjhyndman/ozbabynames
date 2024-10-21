@@ -83,7 +83,7 @@ ozbabynames |>
 
 And let's see that animated
 
-```{r animate-explore-author-names, cache=TRUE}
+```{r animate-explore-author-names, cache=TRUE, message = FALSE, warning = FALSE}
 library(gganimate)
 
 ozbabynames |>
