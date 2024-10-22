@@ -8,12 +8,15 @@ Authors@R: c(
   person("Nick", "Tierney", role="aut", comment=c(ORCID="0000-0003-1460-8722")),
   person("Anna", "Fergusson", role="ctb", comment=c(ORCID="0000-0002-1987-8150")))
 Description: Data on the most popular baby names by sex and year, and for each state in Australia, as provided by the state and territory governments. The quality and quantity of the data varies with the state.
+Depends: R (>= 4.1.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
 Suggests:
     ggplot2,
-    dplyr
+    dplyr,
+    testthat (>= 3.0.0)
 URL: https://github.com/robjhyndman/ozbabynames, https://pkg.robjhyndman.com/ozbabynames/
 BugReports: https://github.com/robjhyndman/ozbabynames/issues
+Config/testthat/edition: 3
