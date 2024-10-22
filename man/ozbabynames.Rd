@@ -15,10 +15,11 @@ ozbabynames
 }
 \description{
 The ozbabynames package provides the data object `ozbabynames` containing
-popular Australian baby names by sex, state and year. The coverage is very uneven,
+popular Australian baby names by sex, state/territory and year. The coverage is very uneven,
 with some states only providing very recent data, and some states only providing the top 50 or 100
 names. The ACT do not provide counts, and so no ACT data are included.
-South Australia has by far the best data, with full coverage of all names back to 1944.
+South Australia has by far the best data, with full coverage of all names from 1944-1917,
+although only the top 100 names thereafter.
 }
 \examples{
 head(ozbabynames)
@@ -27,18 +28,19 @@ head(ozbabynames)
 library(ggplot2)
 library(dplyr)
 ozbabynames |>
-filter(year==2016) |>
-  group_by(sex,name) |>
+  filter(year == 2016) |>
+  group_by(sex, name) |>
   summarise(count = sum(count)) |>
   arrange(-count) |>
   top_n(10) |>
   ungroup() |>
-  ggplot(aes(x=reorder(name, count), y=count, group=sex)) +
-    geom_bar(stat='identity') +
-    facet_grid(sex ~ ., scales = "free_y") +
-    coord_flip() +
-    ylab("Count") + xlab("Name") +
-    ggtitle("Top ten male and female names in 2016")
+  ggplot(aes(x = reorder(name, count), y = count, group = sex)) +
+  geom_bar(stat = "identity") +
+  facet_grid(sex ~ ., scales = "free_y") +
+  coord_flip() +
+  ylab("Count") +
+  xlab("Name") +
+  ggtitle("Top ten male and female names in 2016")
 
 }
 \keyword{datasets}
