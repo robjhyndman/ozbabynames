@@ -7,7 +7,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Data on the most popular baby names in Australia.
+Data on the most popular baby names by sex and year, and for each state in Australia, as provided by the state and territory governments. The quality and quantity of the data varies with the state.
 }
 \seealso{
 Useful links:
