@@ -10,15 +10,20 @@ source("data-raw/tas.R")
 source("data-raw/vic.R")
 source("data-raw/wa.R")
 
-ozbabynames <-
-  mutate(tas, state="Tasmania") %>%
-  bind_rows(mutate(nsw, state="New South Wales")) %>%
-  bind_rows(mutate(nt, state="Northern Territory")) %>%
-  bind_rows(mutate(qld, state="Queensland")) %>%
-  bind_rows(mutate(sa, state="South Australia")) %>%
-  bind_rows(mutate(vic, state="Victoria")) %>%
-  bind_rows(mutate(wa, state="Western Australia")) %>%
-  arrange(-year, sex, state, -count)
-ozbabynames
+ozbabynames <- bind_rows(
+  mutate(tas, state = "Tasmania"),
+  mutate(nsw, state = "New South Wales"),
+  mutate(nt, state = "Northern Territory"),
+  mutate(qld, state = "Queensland"),
+  mutate(sa, state = "South Australia"),
+  mutate(vic, state = "Victoria"),
+  mutate(wa, state = "Western Australia")
+) |>
+  arrange(-year, sex, state, -count) |>
+  mutate(
+    year = as.integer(year),
+    count = as.integer(count)
+  ) |>
+  select(year, state, sex, name, count)
 
-usethis::use_data(ozbabynames, overwrite=TRUE)
+usethis::use_data(ozbabynames, overwrite = TRUE)

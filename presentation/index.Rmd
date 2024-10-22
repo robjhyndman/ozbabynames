@@ -382,7 +382,7 @@ sa/female_cy1953_top.csv, line 450
 
 ```{r diversity, echo=FALSE, message=FALSE}
 
-all <- ozbabynames %>% 
+all <- ozbabynames |> 
   filter(count >=300)
 
 diversity <- ggplot(all, aes(year, count)) + geom_point() + ggtitle("Counts of most popular names over time") 

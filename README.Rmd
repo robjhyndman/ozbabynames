@@ -58,15 +58,21 @@ ozbabynames_1952_top_10 <- ozbabynames |>
   top_n(10) |>
   ungroup()
 
-ggplot(ozbabynames_1952_top_10,
-       aes(x = reorder(name, count),
-           y = count,
-           group = sex)) +
+ggplot(
+  ozbabynames_1952_top_10,
+  aes(
+    x = reorder(name, count),
+    y = count,
+    group = sex
+  )
+) +
   geom_col() +
-  facet_grid(sex ~ ., 
-             scales = "free_y") +
+  facet_grid(sex ~ .,
+    scales = "free_y"
+  ) +
   coord_flip() +
-  ylab("Count") + xlab("Name") +
+  ylab("Count") +
+  xlab("Name") +
   ggtitle("Top ten male and female names in 1952")
 ```
 
@@ -77,15 +83,18 @@ author_names <- c("Robin", "Robert", "Mitchell", "Nicholas", "Jessie", "Jessica"
 
 ozbabynames |>
   filter(name %in% author_names) |>
-  group_by(name, year) |> 
-  summarise(count = sum(count)) |> 
-  ggplot(aes(x = year, 
-             y = count,
-             colour = name)) +
+  group_by(name, year) |>
+  summarise(count = sum(count)) |>
+  ggplot(aes(
+    x = year,
+    y = count,
+    colour = name
+  )) +
   geom_line() +
   theme_bw() +
   facet_wrap(~name,
-             scales = "free_y") +
+    scales = "free_y"
+  ) +
   theme(legend.position = "none")
 ```
 
@@ -96,24 +105,31 @@ library(gganimate)
 
 ozbabynames |>
   filter(name %in% author_names) |>
-  count(name,year, wt = count) |>
-  ggplot(aes(x = year, 
-             y = n,
-             colour = name,
-             group = name,
-             label = name,
-             fill = name)) +
+  count(name, year, wt = count) |>
+  ggplot(aes(
+    x = year,
+    y = n,
+    colour = name,
+    group = name,
+    label = name,
+    fill = name
+  )) +
   geom_line(linewidth = 1, linetype = "dotted") +
-  geom_label(colour = "white", alpha = 0.75, size =  5) +
+  geom_label(colour = "white", alpha = 0.75, size = 5) +
   theme_bw() +
-  theme(panel.grid = element_blank(),
-        legend.position = "none",
-        title = element_text(colour = "purple",
-                             size = 20,
-                             face = "bold")
-        ) +
-  labs( title = "number of bubs dubbed in {frame_along} ",
-        y = "n babies" ) +
+  theme(
+    panel.grid = element_blank(),
+    legend.position = "none",
+    title = element_text(
+      colour = "purple",
+      size = 20,
+      face = "bold"
+    )
+  ) +
+  labs(
+    title = "number of bubs dubbed in {frame_along} ",
+    y = "n babies"
+  ) +
   scale_y_log10(labels = scales::comma) +
   transition_reveal(along = year)
 ```

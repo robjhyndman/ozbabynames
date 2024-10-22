@@ -2,11 +2,10 @@ library(purrr)
 library(tidyverse)
 library(fs)
 
-read_sa <- function(x){
-
-  read_csv(x, col_names = c("name", "number", "position"), skip = 1) %>%
+read_sa <- function(x) {
+  read_csv(x, col_names = c("name", "number", "position"), skip = 1) |>
     # remove names with "?" after them
-    filter(!str_detect(name, "\\?")) %>%
+    filter(!str_detect(name, "\\?")) |>
     mutate(
       # Extract sex from file name
       sex = ifelse(grepl("female", x), "Female", "Male"),
@@ -16,18 +15,19 @@ read_sa <- function(x){
       year = as.integer(year),
       # Make name in title case
       name = str_to_title(name)
-    ) %>%
-    select(name, sex, year, number) %>%
+    ) |>
+    select(name, sex, year, number) |>
     # Combine duplicates
-    group_by(name,sex,year) %>%
-    summarise(number = sum(number)) %>%
+    group_by(name, sex, year) |>
+    summarise(number = sum(number)) |>
     ungroup()
 }
 
 file_names <- list.files("data-raw/sa", "\\.csv", full.names = TRUE)
 
-sa <- map_df(file_names, read_sa) %>%
-  mutate(year = as.integer(year)) %>%
-  filter(!is.na(name))
+sa <- map_df(file_names, read_sa) |>
+  mutate(year = as.integer(year)) |>
+  filter(!is.na(name)) |>
+  filter(!is.na(number))
 
 write_csv(sa, here::here("data-raw/sa/merged/sa_babynames.csv"))
