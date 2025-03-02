@@ -16,10 +16,10 @@ ozbabynames
 \description{
 The ozbabynames package provides the data object `ozbabynames` containing
 popular Australian baby names by sex, state/territory and year. The coverage is very uneven,
-with some states only providing very recent data, and some states only providing the top 50 or 100
-names. The ACT do not provide counts, and so no ACT data are included.
-South Australia has by far the best data, with full coverage of all names from 1944-1917,
-although only the top 100 names thereafter.
+with some states only providing very recent data, and some states only providing the top 50
+or 100 names. The ACT do not provide counts, and so no ACT data are included.
+South Australia has by far the best data, with full coverage of all names from 1944-2017
+and 2024, although only the top 100 names in other years.
 }
 \examples{
 head(ozbabynames)
