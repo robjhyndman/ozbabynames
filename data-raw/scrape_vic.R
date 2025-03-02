@@ -19,11 +19,12 @@ bn_data <- map_df(1:length(year_info), function(i) {
     html_element("h1") |>
     html_text2() |>
     str_squish() |>
-    str_sub(start = -4)
+    str_sub(start = -4) |>
+    as.integer()
 
   table_data <- html |>
     html_element("table") |>
-    html_table() |>
+    html_table(header = TRUE) |>
     janitor::clean_names() |>
     select(-starts_with("position")) |>
     select(-starts_with("rank"))
@@ -45,7 +46,8 @@ bn_data <- map_df(1:length(year_info), function(i) {
     )
 
   bind_rows(table_male, table_female) |>
-    mutate(year)
+    mutate(year) |>
+    filter(name != "")
 })
 
 write_csv(bn_data, here::here("data-raw/vic/vic_babynames.csv"))
