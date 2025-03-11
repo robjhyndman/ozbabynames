@@ -65,13 +65,13 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/robjhyndman/ozbabynames" class="external-link">ozbabynames</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ozbabynames</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        name    sex year count           state</span></span>
-<span><span class="co">#&gt; 1      Isla Female 2023   403 New South Wales</span></span>
-<span><span class="co">#&gt; 2    Amelia Female 2023   399 New South Wales</span></span>
-<span><span class="co">#&gt; 3    Olivia Female 2023   381 New South Wales</span></span>
-<span><span class="co">#&gt; 4       Mia Female 2023   347 New South Wales</span></span>
-<span><span class="co">#&gt; 5 Charlotte Female 2023   338 New South Wales</span></span>
-<span><span class="co">#&gt; 6       Ava Female 2023   284 New South Wales</span></span></code></pre></div>
+<span><span class="co">#&gt;   year           state    sex      name count</span></span>
+<span><span class="co">#&gt; 1 2024 New South Wales Female Charlotte   383</span></span>
+<span><span class="co">#&gt; 2 2024 New South Wales Female    Amelia   367</span></span>
+<span><span class="co">#&gt; 3 2024 New South Wales Female    Olivia   316</span></span>
+<span><span class="co">#&gt; 4 2024 New South Wales Female       Mia   308</span></span>
+<span><span class="co">#&gt; 5 2024 New South Wales Female      Isla   298</span></span>
+<span><span class="co">#&gt; 6 2024 New South Wales Female     Chloe   275</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -95,6 +95,13 @@
 </ul>
 </div>
 <div class="section level2">
+<h2 id="related-data">Related data<a class="anchor" aria-label="anchor" href="#related-data"></a>
+</h2>
+<ul>
+<li><a href="https://github.com/kkoopmans/anglosphere-baby-names" class="external-link">Anglosphere baby names</a></li>
+</ul>
+</div>
+<div class="section level2">
 <h2 id="example-usage">Example usage<a class="anchor" aria-label="anchor" href="#example-usage"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -109,15 +116,21 @@
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html" class="external-link">top_n</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">ozbabynames_1952_top_10</span>,</span>
-<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">count</span><span class="op">)</span>,</span>
-<span>           y <span class="op">=</span> <span class="va">count</span>,</span>
-<span>           group <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
+<span>  <span class="va">ozbabynames_1952_top_10</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">count</span><span class="op">)</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">count</span>,</span>
+<span>    group <span class="op">=</span> <span class="va">sex</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">.</span>, </span>
-<span>             scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">.</span>,</span>
+<span>    scales <span class="op">=</span> <span class="st">"free_y"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Name"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Name"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Top ten male and female names in 1952"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-plot-1.png" width="100%"></p>
 <p>And let’s look at the popularity of the package author names, “Rob”, “Mitchell”, “Nicholas”, and “Jessie”, as well as some similar names.</p>
@@ -126,15 +139,18 @@
 <span></span>
 <span><span class="va">ozbabynames</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">author_names</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, </span>
-<span>             y <span class="op">=</span> <span class="va">count</span>,</span>
-<span>             colour <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">year</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">count</span>,</span>
+<span>    colour <span class="op">=</span> <span class="va">name</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">name</span>,</span>
-<span>             scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    scales <span class="op">=</span> <span class="st">"free_y"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-explore-author-names-1.png" width="100%"></p>
 <p>And let’s see that animated</p>
@@ -143,24 +159,31 @@
 <span></span>
 <span><span class="va">ozbabynames</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">author_names</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">name</span>,<span class="va">year</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, </span>
-<span>             y <span class="op">=</span> <span class="va">n</span>,</span>
-<span>             colour <span class="op">=</span> <span class="va">name</span>,</span>
-<span>             group <span class="op">=</span> <span class="va">name</span>,</span>
-<span>             label <span class="op">=</span> <span class="va">name</span>,</span>
-<span>             fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">year</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">year</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">n</span>,</span>
+<span>    colour <span class="op">=</span> <span class="va">name</span>,</span>
+<span>    group <span class="op">=</span> <span class="va">name</span>,</span>
+<span>    label <span class="op">=</span> <span class="va">name</span>,</span>
+<span>    fill <span class="op">=</span> <span class="va">name</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1</span>, linetype <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"white"</span>, alpha <span class="op">=</span> <span class="fl">0.75</span>, size <span class="op">=</span>  <span class="fl">5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"white"</span>, alpha <span class="op">=</span> <span class="fl">0.75</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>        legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
-<span>        title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"purple"</span>,</span>
-<span>                             size <span class="op">=</span> <span class="fl">20</span>,</span>
-<span>                             face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span></span>
-<span>        <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span> title <span class="op">=</span> <span class="st">"number of bubs dubbed in {frame_along} "</span>,</span>
-<span>        y <span class="op">=</span> <span class="st">"n babies"</span> <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>    title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span></span>
+<span>      colour <span class="op">=</span> <span class="st">"purple"</span>,</span>
+<span>      size <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"number of bubs dubbed in {frame_along} "</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"n babies"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_log10</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/comma.html" class="external-link">comma</a></span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">transition_reveal</span><span class="op">(</span>along <span class="op">=</span> <span class="va">year</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-animate-explore-author-names-1.gif" width="100%"></p>
@@ -169,6 +192,28 @@
 <h2 id="known-issues">Known Issues<a class="anchor" aria-label="anchor" href="#known-issues"></a>
 </h2>
 <p>The coverage is very uneven, with some states only providing very recent data, and some states only providing the top 50 or 100 names. The ACT does not provide counts, and so no ACT data are included. South Australia has by far the best data, with full coverage of all names back to 1944.</p>
+</div>
+<div class="section level2">
+<h2 id="sources">Sources<a class="anchor" aria-label="anchor" href="#sources"></a>
+</h2>
+<ul>
+<li><p><a href="https://data.sa.gov.au/data/dataset/popular-baby-names" class="external-link">South Australia</a></p></li>
+<li><p><a href="https://data.nsw.gov.au/data/dataset/popular-baby-names-from-1952" class="external-link">New South Wales</a></p></li>
+<li>
+<p>Tasmania</p>
+<ul>
+<li><a href="https://data.gov.au/dataset/0ec6f374-8b54-4500-ae40-97f39bba9036" class="external-link uri">https://data.gov.au/dataset/0ec6f374-8b54-4500-ae40-97f39bba9036</a></li>
+<li><a href="https://data.gov.au/dataset/a37db87d-6bbb-4fb1-96a4-224266b757b8" class="external-link uri">https://data.gov.au/dataset/a37db87d-6bbb-4fb1-96a4-224266b757b8</a></li>
+<li><a href="https://data.gov.au/dataset/893891b6-2689-4089-84cd-1a7d8647b19e" class="external-link uri">https://data.gov.au/dataset/893891b6-2689-4089-84cd-1a7d8647b19e</a></li>
+<li>Only top 10 by rank available after 2016</li>
+</ul>
+</li>
+<li><p><a href="https://www.bdm.vic.gov.au/births/naming-your-child/popular-baby-names-in-victoria" class="external-link">Victoria</a></p></li>
+<li><p><a href="https://www.wa.gov.au/organisation/department-of-justice/the-registry-of-births-deaths-and-marriages/popular-baby-names" class="external-link">Western Australia</a></p></li>
+<li><p><a href="https://www.data.qld.gov.au/dataset/top-100-baby-names" class="external-link">Queensland</a></p></li>
+<li><p><a href="https://nt.gov.au/law/bdm/popular-baby-names" class="external-link">Northern Territory</a></p></li>
+<li><p><a href="https://search.data.gov.au/search?q=baby%20names" class="external-link">Other data</a></p></li>
+</ul>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
