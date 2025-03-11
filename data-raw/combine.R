@@ -1,11 +1,9 @@
 # Combine states into single object
 
-# updated
 source("data-raw/nt.R")
 source("data-raw/qld.R")
 source("data-raw/nsw.R")
 source("data-raw/sa.R")
-# nothing to update for tasmania
 source("data-raw/tas.R")
 source("data-raw/vic.R")
 source("data-raw/wa.R")
