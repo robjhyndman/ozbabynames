@@ -34,12 +34,17 @@ install.packages("ozbabynames")
 
 ## Related packages
 
-- [babynames](https://hadley.github.io/babynames/) - US baby names from
-  1880 to 2017.
-- [nzbabynames](https://ekothe.github.io/nzbabynames/) - New Zealand
-  baby names from 1900 to 2017.
+- [babynames](https://hadley.github.io/babynames/) - US baby names
+- [guaguas](https://github.com/rivaquiroga/guaguas) - Chilean baby names
+- [iebabynames](https://github.com/stefan-mueller/iebabynames) - Irish
+  baby names
 - [norwaynames](https://github.com/ekothe/norwaynames) - Norway baby
-  names from 1880 to 2017.
+  names
+- [nzbabynames](https://ekothe.github.io/nzbabynames/) - New Zealand
+  baby names
+- [prenoms](https://github.com/ThinkR-open/prenoms) - French baby names
+- [ukbabynames](https://github.com/mine-cetinkaya-rundel/ukbabynames) -
+  UK baby names
 
 ## Related data
 
